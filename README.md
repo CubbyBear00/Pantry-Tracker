@@ -31,7 +31,7 @@ To run this project, you must have the following JAR files in your classpath:
 
 1. Clone the repository to your local machine.
 2. Ensure the required dependencies are linked in your IDE or included in your build path.
-3. Run the App.java file located in the src/main/java/com/pantry/ directory.
+3. Run the PantryTracker.java file located in the src/main/java/com/pantry/ directory.
 
 ## Usage Instructions
 
