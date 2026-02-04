@@ -43,10 +43,13 @@ Upon launching the application, use the following commands in the terminal:
 * **remove:** Prompts for a product ID to either decrease the quantity by one or delete the entry entirely.
 * **exit:** Securely closes the database connection and terminates the program.
 
-## Credits and Attribution
+## Acknowledgments, Credits, and Legal
+This project uses the following third-party services and libraries:
 
-* **Data Source:** This application utilizes the Open Food Facts API. Product data is provided by the Open Food Facts community under the Open Database License (ODbL).
-* **Development Assistance:** This project was developed as a collaborative effort between the developer and Google Gemini (AI) to demonstrate proficiency in API integration and database management.
+* **Data Source:** Product data is fetched from the [Open Food Facts API](https://world.openfoodfacts.org/). This data is made available under the Open Database License (ODbL).
+* **Libraries:** * [Jackson Project](https://github.com/FasterXML/jackson) for JSON processing (Apache License 2.0).
+    * [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc) by Xerial (Apache License 2.0).
+* **Development:** This application was developed as a collaborative project with the assistance of Google Gemini (AI).
 
 ## License
 
