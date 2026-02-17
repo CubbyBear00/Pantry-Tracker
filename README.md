@@ -4,7 +4,7 @@ The Smart Pantry Manager is a Java-based Command Line Interface (CLI) applicatio
 
 ## Features
 
-* **Barcode Integration:** Fetches real-time product data (names and brands) from the Open Food Facts global database.
+* **Barcode Integration:** Fetches real-time product data
 * **Manual Data Entry:** Provides a fallback mechanism for items not found in the API or for products without a digital record.
 * **Inventory Management:** Supports adding, searching, and removing products.
 * **Quantity Tracking:** Allows users to manage stock levels by incrementing or decrementing item counts.
@@ -16,7 +16,6 @@ The Smart Pantry Manager is a Java-based Command Line Interface (CLI) applicatio
 * **Database:** SQLite via JDBC
 * **Data Parsing:** Jackson Databind (JSON)
 * **Networking:** Java HttpClient (Standard in JDK 11+)
-* **API:** Open Food Facts REST API
 
 ## Installation and Setup
 
@@ -46,7 +45,6 @@ Upon launching the application, use the following commands in the terminal:
 ## Acknowledgments, Credits, and Legal
 This project uses the following third-party services and libraries:
 
-* **Data Source:** Product data is fetched from the [Open Food Facts API](https://world.openfoodfacts.org/). This data is made available under the Open Database License (ODbL).
 * **Libraries:** * [Jackson Project](https://github.com/FasterXML/jackson) for JSON processing (Apache License 2.0).
     * [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc) by Xerial (Apache License 2.0).
 * **Development:** This application was developed as a collaborative project with the assistance of Google Gemini (AI).
