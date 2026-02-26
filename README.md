@@ -47,7 +47,7 @@ The dashboard can be accessed at: http://localhost:7070
 
 ## Usage
 
-* Use Webcam to enter in barcode
+* Use Webcam to enter in barcode (If browser asks for HTML5 canvas data you must allow it or the camera won't work)
 * Manually enter barcode
 * manually enter in product (Barcode is optional when using manual entry)
 
