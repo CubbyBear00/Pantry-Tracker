@@ -30,13 +30,16 @@ A Java-based inventory management application that tracks food items through bar
 
 ## Prerequisites
 
-* Java Development Kit (JDK) 11 or higher.
+### To build
+* Java Development Kit (JDK) 21.
 * Maven or another build tool to manage the following dependencies:
 * javalin
 * jackson-databind
 * sqlite-jdbc
 * slf4j-simple
-
+  
+### To run
+* JDK 21
 
 
 ## Installation and Setup
@@ -44,6 +47,8 @@ A Java-based inventory management application that tracks food items through bar
 1. Download the repository
 2. Open the Pantry-Tracker folder
 3. Run "RunPantry.bat"
+4. pantry.db will be automatically created
+   (Do not delete this file, it is where your entered data is stored)
 
 The dashboard can be accessed at: http://localhost:7070
 
@@ -54,6 +59,7 @@ The dashboard can be accessed at: http://localhost:7070
 * Manually enter in product (Barcode is optional when using manual entry)
 * Adjust quantity of items
 * Delete items
+* Items are saved to pantry.db file
 
 ### API Endpoints
 
