@@ -1,54 +1,66 @@
-# Pantry-Tracker
+# Smart Pantry System
 
-The Smart Pantry Manager is a Java-based Command Line Interface (CLI) application designed to streamline kitchen inventory management. By integrating with the Open Food Facts API, the system allows users to catalog grocery items via barcodes, track quantities, and maintain a persistent local database.
+A Java-based inventory management application that tracks food items through barcode scanning, manual entry, and a web dashboard. The system integrates with the Open Food Facts API to automatically retrieve product details and stores all data in a local SQLite database.
+
+Data Attribution
+
+1. Attribution: Data is provided by Open Food Facts under the Open Database License (ODbL)
+    This project utilizes the Open Food Facts API to automatically retrieve product names and brands based on barcode scans.
+    Data Source: All food product information is sourced from the Open Food Facts database.
+    License: The data is made available under the Open Database License (ODbL).
+    API Usage: This application identifies itself to the Open Food Facts servers using a custom User-Agent header as per their technical guidelines.
 
 ## Features
 
-* **Barcode Integration:** Fetches real-time product data
-* **Manual Data Entry:** Provides a fallback mechanism for items not found in the API or for products without a digital record.
-* **Inventory Management:** Supports adding, searching, and removing products.
-* **Quantity Tracking:** Allows users to manage stock levels by incrementing or decrementing item counts.
-* **Persistent Storage:** Utilizes an SQLite database to ensure data is retained across application sessions.
+* Barcode Integration: Automatically fetches product names and brands from the Open Food Facts API.
+* Dual Interface: Includes a Command Line Interface (CLI) for rapid scanning and a Web interface for visual management.
+* Persistent Storage: Uses a local SQLite database (pantry.db) to ensure data remains available between sessions.
+* Automated Logic: Updates quantities on barcode conflict and automatically removes items when their quantity reaches zero.
 
 ## Technical Stack
 
-* **Language:** Java 11 or higher
-* **Database:** SQLite via JDBC
-* **Data Parsing:** Jackson Databind (JSON)
-* **Networking:** Java HttpClient (Standard in JDK 11+)
+* Language: Java 11 or higher
+* Database: SQLite (via JDBC)
+* Web Framework: Javalin
+* JSON Processing: Jackson Databind
+* External API: Open Food Facts API
+
+## Prerequisites
+
+* Java Development Kit (JDK) 11 or higher.
+* Maven or another build tool to manage the following dependencies:
+* javalin
+* jackson-databind
+* sqlite-jdbc
+* slf4j-simple
+
+
 
 ## Installation and Setup
 
-### Prerequisites
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/smart-pantry-system.git
+cd smart-pantry-system
+```
+2. run
 
-To run this project, you must have the following JAR files in your classpath:
-1. **SQLite JDBC Driver:** (e.g., sqlite-jdbc-3.x.x.jar)
-2. **Jackson Databind:** (e.g., jackson-databind-2.x.x.jar)
-3. **Jackson Core & Annotations:** Required dependencies for Databind.
+The dashboard can be accessed at: http://localhost:7070
 
-### Running the Application
+## Usage
 
-1. Clone the repository to your local machine.
-2. Ensure the required dependencies are linked in your IDE or included in your build path.
-3. Run the PantryTracker.java file located in the src/main/java/com/pantry/ directory.
+### CLI Commands
 
-## Usage Instructions
+* list: Display all items currently in the pantry.
+* search: Find specific products by name.
+* remove: Reduce the quantity of an item or delete it by ID.
+* exit: Safely close the database and exit the program.
+* [barcode]: Entering a numeric barcode triggers an API lookup.
 
-Upon launching the application, use the following commands in the terminal:
+### API Endpoints
 
-* **[Barcode Number]:** Enter a 12 or 13-digit barcode to search for and add a product.
-* **list:** Displays the entire contents of your pantry, including IDs, names, and quantities.
-* **search:** Prompts for a product name to find specific entries in the database.
-* **remove:** Prompts for a product ID to either decrease the quantity by one or delete the entry entirely.
-* **exit:** Securely closes the database connection and terminates the program.
-
-## Acknowledgments, Credits, and Legal
-This project uses the following third-party services and libraries:
-
-* **Libraries:** * [Jackson Project](https://github.com/FasterXML/jackson) for JSON processing (Apache License 2.0).
-    * [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc) by Xerial (Apache License 2.0).
-* **Development:** This application was developed as a collaborative project with the assistance of Google Gemini (AI).
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for full details.
+* GET /api/inventory: Returns a JSON array of all stored items.
+* POST /api/add?barcode=[id]&qty=[n]: Adds an item via API lookup.
+* POST /api/manual: Saves an item with manually provided details.
+* POST /api/update?barcode=[id]&change=[n]: Adjusts the quantity of a specific item.
+* DELETE /api/delete?barcode=[id]: Removes an item from the database.
