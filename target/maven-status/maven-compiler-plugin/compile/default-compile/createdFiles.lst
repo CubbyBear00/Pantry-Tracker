@@ -1,0 +1,6 @@
+com\pantry\DatabaseManager.class
+com\pantry\InventoryItem.class
+com\pantry\Product.class
+com\pantry\FoodScanner.class
+com\pantry\PantryServer.class
+com\pantry\PantryTracker.class
