@@ -7,10 +7,10 @@ Data Attribution
 1. Attribution: Data is provided by Open Food Facts under the Open Database License (ODbL)
    This project utilizes the Open Food Facts API to automatically retrieve product names and brands based on barcode scans.
 
-   Data Source: All food product information is sourced from the Open Food Facts database.
-   License: The data is made available under the Open Database License (ODbL).
-   API Usage: This application identifies itself to the Open Food Facts servers using a custom User-Agent header as per their technical guidelines.
-   Product images (if displayed) are provided under the [Creative Commons Attribution ShareAlike](https://creativecommons.org/licenses/by-sa/3.0/)
+   * Data Source: All food product information is sourced from the Open Food Facts database.
+   * License: The data is made available under the Open Database License (ODbL).
+   * API Usage: This application identifies itself to the Open Food Facts servers using a custom User-Agent header as per their technical guidelines.
+   * Product images (if displayed) are provided under the [Creative Commons Attribution ShareAlike](https://creativecommons.org/licenses/by-sa/3.0/)
 
 ## Features
 
