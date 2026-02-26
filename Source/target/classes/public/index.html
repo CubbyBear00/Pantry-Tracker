@@ -63,12 +63,12 @@
                 "reader", 
                 { 
                     fps: 30, 
-                    qrbox: { width: 400, height: 150 }, 
+                    qrbox: { width: 250, height: 150 }, 
                     aspectRatio: 1.0 
                 }
             );
             
-            html5QrcodeScanner.render(onScanSuccess);
+            html5QrcodeScanner.render(onScanSuccess, () => {/* ignore failures */});
         }
 
         function onScanSuccess(decodedText) {
