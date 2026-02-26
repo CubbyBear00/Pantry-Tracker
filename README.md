@@ -40,24 +40,16 @@ Data Attribution
 
 ## Installation and Setup
 
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/smart-pantry-system.git
-cd smart-pantry-system
-```
-2. run
+1. Download "Run Program" folder
+2. Run RunPantry.bat
 
 The dashboard can be accessed at: http://localhost:7070
 
 ## Usage
 
-### CLI Commands
-
-* list: Display all items currently in the pantry.
-* search: Find specific products by name.
-* remove: Reduce the quantity of an item or delete it by ID.
-* exit: Safely close the database and exit the program.
-* [barcode]: Entering a numeric barcode triggers an API lookup.
+* Use Webcam to enter in barcode
+* Manually enter barcode
+* manually enter in product (Barcode is optional when using manual entry)
 
 ### API Endpoints
 
