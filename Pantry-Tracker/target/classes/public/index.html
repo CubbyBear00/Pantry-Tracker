@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Pantry Dashboard</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        body { font-family: sans-serif;  max-width: 800px; margin: auto; padding: 20px; background: #21214f; color:white;}
+        .card { background: rgb(94, 86, 255); padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        h1, h2, h3 {color: white; border-bottom: 2px solid #007bff; padding-bottom: 10px;}
+        #reader { width: 100%; border-radius: 8px; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border-bottom: 1px solid rgb(126, 126, 126); text-align: left; }
+        input {background: white; border: 1px solid lightgray; color: black; padding: 8px; border-radius: 4px; margin-bottom: 5px;}
+        .btn { padding: 8px 12px; cursor: pointer; border: none; border-radius: 4px; background: #007bff; color: white; }
+        .btn-scan { background: #28a745; margin-bottom: 10px; width: 100%; font-size: 1.1em; }
+        .btn-delete { color:white; background:darkred; }
+    </style>
+</head>
+<body>
+
+    <h1>Barcode Pantry Tracker</h1>
+
+    <div class="card">
+        <button class="btn btn-scan" onclick="startScanner()">Open Camera Scanner</button>
+        <div id="reader"></div>
+        <p id="status" style="text-align: center; color: #e0e0e0;"></p>
+    </div>
+
+    <div class="card">
+        <h2>Manual Barcode Entry</h2>
+        <p style="font-size: 0.9em;">Type a barcode to fetch info automatically from the API.</p>
+        <div class="controls">
+            <input type="text" id="manualBarcode" placeholder="Enter barcode (e.g. 013764027053)">
+            <button class="btn" onclick="lookupBarcode()">Fetch & Add</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Add Item Manually (Custom)</h3>
+        <p style="font-size: 0.9em;">Use this if the barcode isn't in the system.</p>
+        <input type="text" id="mBarcode" placeholder="Barcode (Optional)">
+        <input type="text" id="mName" placeholder="Product Name">
+        <input type="text" id="mBrand" placeholder="Brand">
+        <input type="number" id="mQty" value="1" style="width: 60px;">
+        <input type="text" id="mAllergens" placeholder="Allergens">
+        <button class="btn" onclick="manualAdd()">Save Custom Item</button>
+    </div>
+
+    <div class="card">
+        <h3>Current Inventory</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Brand</th>
+                    <th>Qty</th>
+                    <th>Allergens</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        let html5QrcodeScanner;
+
+        // --- 1. LOOKUP BY BARCODE (API CALL) ---
+        function lookupBarcode() {
+            const barcode = document.getElementById('manualBarcode').value.trim();
+            if (!barcode) return alert("Please enter a barcode first.");
+
+            document.getElementById('status').innerText = "Looking up " + barcode + "...";
+
+            fetch(`/api/add?barcode=${encodeURIComponent(barcode)}&qty=1`, { method: 'POST' })
+                .then(res => {
+                    if (res.ok) {
+                        location.reload(); 
+                    } else {
+                        alert("Product not found in API. Please enter details manually below.");
+                        document.getElementById('status').innerText = "";
+                    }
+                })
+                .catch(err => console.error("Error:", err));
+        }
+
+        // --- 2. FULL MANUAL SAVE ---
+        function manualAdd() {
+            const name = document.getElementById('mName').value;
+            if (!name) return alert("Product Name is required for manual entry.");
+
+            const params = new URLSearchParams({
+                barcode: document.getElementById('mBarcode').value || "CUSTOM-" + Date.now(),
+                name: name,
+                brand: document.getElementById('mBrand').value || "Unknown",
+                qty: document.getElementById('mQty').value || 1,
+                allergens: document.getElementById('mAllergens').value || 'none'
+            });
+
+            fetch('/api/manual?' + params, { method: 'POST' }).then(() => location.reload());
+        }
+
+        // --- 3. CAMERA SCANNER LOGIC ---
+        function startScanner() {
+            document.getElementById('status').innerText = "Scanning...";
+            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess);
+        }
+
+        function onScanSuccess(decodedText) {
+            html5QrcodeScanner.clear();
+            document.getElementById('manualBarcode').value = decodedText;
+            lookupBarcode();
+        }
+
+        // --- 4. INVENTORY MANAGEMENT ---
+        function loadInventory() {
+            fetch('/api/inventory')
+                .then(res => res.json())
+                .then(data => {
+                    const body = document.getElementById('inventoryBody');
+                    body.innerHTML = data.map(item => `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.brand}</td>
+                            <td>${item.quantity}</td>
+                            <td>${item.allergens}</td>
+                            <td>
+                                <button class="btn" onclick="updateQty('${item.barcode}', 1)">+</button>
+                                <button class="btn" onclick="updateQty('${item.barcode}', -1)">-</button>
+                                <button class="btn btn-delete" onclick="deleteItem('${item.barcode}')">Delete</button>
+                            </td>
+                        </tr>
+                    `).join('');
+                });
+        }
+
+        function updateQty(barcode, change) {
+            fetch(`/api/update?barcode=${barcode}&change=${change}`, { method: 'POST' }).then(() => loadInventory());
+        }
+
+        function deleteItem(barcode) {
+            if(confirm("Delete this item?")) {
+                fetch(`/api/delete?barcode=${barcode}`, { method: 'DELETE' }).then(() => loadInventory());
+            }
+        }
+
+        loadInventory();
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.project.sourcePaths": [
+        "Pantry-Tracker"
+    ],
+    "java.dependency.syncWithFolderExplorer": false
+}

@@ -41,8 +41,9 @@ A Java-based inventory management application that tracks food items through bar
 
 ## Installation and Setup
 
-1. Download "Run Program" folder
-2. Run RunPantry.bat
+1. Download the repository
+2. Open the Pantry-Tracker folder
+3. Run "RunPantry.bat"
 
 The dashboard can be accessed at: http://localhost:7070
 
@@ -50,9 +51,9 @@ The dashboard can be accessed at: http://localhost:7070
 
 * Use Webcam to enter in barcode (If browser asks for HTML5 canvas data you must allow it or the camera won't work)
 * Manually enter barcode
-* manually enter in product (Barcode is optional when using manual entry)
+* Manually enter in product (Barcode is optional when using manual entry)
 * Adjust quantity of items
-* Deleter items
+* Delete items
 
 ### API Endpoints
 
