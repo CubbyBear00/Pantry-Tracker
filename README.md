@@ -52,6 +52,12 @@ A Java-based inventory management application that tracks food items through bar
 
 The dashboard can be accessed at: http://localhost:7070
 
+### How to build
+1. Download the repository
+2. Ensure all prerequisites are downloaded in the to build section
+3. Open the Pantry-Tracker folder
+4. Run "BuildandRun.bat"
+
 ## Usage
 
 * Use Webcam to enter in barcode (If browser asks for HTML5 canvas data you must allow it or the camera won't work)
