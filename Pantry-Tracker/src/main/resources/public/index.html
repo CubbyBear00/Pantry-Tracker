@@ -11,10 +11,10 @@
         h1, h2, h3 {color: #553d40; border-bottom: 2px solid #007bff; padding-bottom: 10px;}
         #reader { width: 100%; border-radius: 8px; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; border-bottom: 1px solid rgb(126, 126, 126); text-align: left; }
-        input {background: white; border: 1px solid lightgray; color: black; padding: 8px; border-radius: 4px; margin-bottom: 5px;}
+        th, td { padding: 12px; border-bottom: 1px solid #7e7e7e; text-align: left; }
+        input {background: #c1ffb6; border: 1px solid lightgray; color: black; padding: 8px; border-radius: 4px; margin-bottom: 5px;}
         .btn { padding: 8px 12px; cursor: pointer; border: none; border-radius: 4px; background: #007bff; color: white; }
-        .btn-scan { background: #28a745; margin-bottom: 10px; width: 100%; font-size: 1.1em; }
+        .btn-scan { background: #7af864; margin-bottom: 10px; width: 100%; color:#7e7e7e; font-size: 1.1em; }
         .btn-delete { color:white; background:darkred; }
     </style>
 </head>
@@ -25,7 +25,7 @@
     <div class="card">
         <button class="btn btn-scan" onclick="startScanner()">Open Camera Scanner</button>
         <div id="reader"></div>
-        <p id="status" style="text-align: center; color: #e0e0e0;"></p>
+        <p id="status" style="text-align: center; color: #000000;"></p>
     </div>
 
     <div class="card">
@@ -128,8 +128,8 @@
                             <td>${item.quantity}</td>
                             <td>${item.allergens}</td>
                             <td>
-                                <button class="btn" onclick="updateQty('${item.barcode}', 1)">+</button>
                                 <button class="btn" onclick="updateQty('${item.barcode}', -1)">-</button>
+                                <button class="btn" onclick="updateQty('${item.barcode}', 1)">+</button>
                                 <button class="btn btn-delete" onclick="deleteItem('${item.barcode}')">Delete</button>
                             </td>
                         </tr>
@@ -149,5 +149,6 @@
 
         loadInventory();
     </script>
+    <footer>Database information provided by <a href="https://world.openfoodfacts.org/">Open Food Facts API</a></footer>
 </body>
 </html>
