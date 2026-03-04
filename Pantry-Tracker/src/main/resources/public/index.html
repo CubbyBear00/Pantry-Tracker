@@ -6,15 +6,15 @@
     <title>Smart Pantry Dashboard</title>
     <script src="https://unpkg.com/html5-qrcode"></script>
     <style>
-        body { font-family: sans-serif;  max-width: 800px; margin: auto; padding: 20px; background: #b6c1ff; color:#553d40;}
-        .card { background: #ffb6c1; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        h1, h2, h3 {color: #553d40; border-bottom: 2px solid #007bff; padding-bottom: 10px;}
+        body { font-family: sans-serif;  max-width: 800px; margin: auto; padding: 20px; background: darkslategray; color:whitesmoke;}
+        .card { background: gray; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px black; margin-bottom: 20px; }
+        h1, h2, h3 {color: whitesmoke; border-bottom: 2px solid black; padding-bottom: 10px;}
         #reader { width: 100%; border-radius: 8px; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { padding: 12px; border-bottom: 1px solid #7e7e7e; text-align: left; }
-        input {background: #c1ffb6; border: 1px solid lightgray; color: black; padding: 8px; border-radius: 4px; margin-bottom: 5px;}
+        input {background: lightgray; border: 1px solid lightgray; color: black; padding: 8px; border-radius: 4px; margin-bottom: 5px;}
         .btn { padding: 8px 12px; cursor: pointer; border: none; border-radius: 4px; background: #007bff; color: white; }
-        .btn-scan { background: #7af864; margin-bottom: 10px; width: 100%; color:#7e7e7e; font-size: 1.1em; }
+        .btn-scan { background: limegreen; margin-bottom: 10px; width: 100%; color:whitesmoke; font-size: 1.1em; }
         .btn-delete { color:white; background:darkred; }
     </style>
 </head>
@@ -25,7 +25,7 @@
     <div class="card">
         <button class="btn btn-scan" onclick="startScanner()">Open Camera Scanner</button>
         <div id="reader"></div>
-        <p id="status" style="text-align: center; color: #000000;"></p>
+        <p id="status" style="text-align: center; color: whitesmoke;"></p>
     </div>
 
     <div class="card">
