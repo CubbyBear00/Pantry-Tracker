@@ -20,6 +20,11 @@ A Java-based inventory management application that tracks food items through bar
 * Persistent Storage: Uses a local SQLite database (pantry.db) to ensure data remains available between sessions.
 * Automated Logic: Updates quantities on barcode conflict and automatically removes items when their quantity reaches zero.
 
+* ## Quick Start
+
+* find and [Download and Run Pantry Tracker](Pantry-Tracker/runpantyry.bat?raw=true)
+* Run the file
+
 ## Technical Stack
 
 * Language: Java 11 or higher
@@ -31,11 +36,6 @@ A Java-based inventory management application that tracks food items through bar
 ## Prerequisites
 
 JDK25 or newer
-
-### Quick Start
-
-* find and [Download and Run Pantry Tracker](runpantyry.bat?raw=true)
-* Run the file
 
 ### To build
 * Java Development Kit (JDK) 21.
