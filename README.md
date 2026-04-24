@@ -22,7 +22,7 @@ A Java-based inventory management application that tracks food items through bar
 
 * ## Quick Start
 
-* find and [Download Pantry Tracker](blob:https://github.com/a7ad8662-b787-44e1-aaec-fd802b10301c)
+* find and [Download Pantry Tracker](https://github.com/a7ad8662-b787-44e1-aaec-fd802b10301c)
 * Run the file
 
 ## Technical Stack
