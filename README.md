@@ -22,7 +22,7 @@ A Java-based inventory management application that tracks food items through bar
 
 * ## Quick Start
 
-* find and [Download and Run Pantry Tracker](Pantry-Tracker/runpantyry.bat?raw=true)
+* find and [Download and Run Pantry Tracker](Pantry-Tracker/RunPantry.bat?raw=true)
 * Run the file
 
 ## Technical Stack
