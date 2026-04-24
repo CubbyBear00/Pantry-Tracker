@@ -34,7 +34,7 @@ JDK25 or newer
 
 ### Quick Start
 
-find and download RunPantry.bat
+find and download [RunPantry.bat](blob:https://github.com/c59265df-38a0-4fc6-9e7a-335715174802)
 Run the file
 
 ### To build
