@@ -30,6 +30,13 @@ A Java-based inventory management application that tracks food items through bar
 
 ## Prerequisites
 
+JDK25 or newer
+
+### Quick Start
+
+find and download RunPantry.bat
+Run the file
+
 ### To build
 * Java Development Kit (JDK) 21.
 * Maven or another build tool to manage the following dependencies:
